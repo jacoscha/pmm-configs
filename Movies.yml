@@ -1,0 +1,220 @@
+# https://github.com/meisnate12/Plex-Meta-Manager                                      
+                                      ######################################################
+                                      #                Movie Collections                   #
+                                      ######################################################
+
+#############
+# Templates #
+#############
+templates:
+  Genre:
+    plex_search:
+      genre: <<genre>>
+    url_poster: <<poster>>
+    sort_title: +++++++_<<collection_name>>
+    collection_order: alpha
+  Chart:
+    sort_title: +1_<<num>><<collection_name>>
+    sync_mode: sync
+    smart_label: random
+  Best of:
+    trakt_list: https://trakt.tv/users/lish408/lists/rotten-tomatoes-best-of-<<year>>
+    sort_title: +1_Best of <<year>>
+    sync_mode: sync
+    summary: Rotten Tomatoes Best Movies of <<year>>
+    smart_label: audience_rating.desc
+  Oscars:
+    trakt_list: https://trakt.tv/users/pjcob/lists/<<year>>-oscars
+    sort_title: '*Oscars <<year>>'
+    sync_mode: sync
+    summary: Academy Awards (Oscars) for <<year>>
+    smart_label: audience_rating.desc
+  Actors:
+    actor: tmdb
+    tmdb_person: <<person>>
+    sort_title: ++_<<collection_name>>
+    collection_order: release
+
+collections:
+##############
+# Letterboxd #
+##############
+  Found Footage Watchlist:
+    letterboxd_list: https://letterboxd.com/tane__/list/found-footage-watchlist/
+    collection_order: custom
+    sync_mode: sync
+  Jake's Horror Watchlist:
+    letterboxd_list: https://letterboxd.com/tane__/list/horror-watchlist/
+    collection_order: custom
+    sync_mode: sync
+  Jake's Documentary Watchlist:
+    letterboxd_list: https://letterboxd.com/tane__/list/documentaries/
+    collection_order: custom
+    sync_mode: sync
+  Letterboxd Official Horror Top 250:
+    letterboxd_list: https://letterboxd.com/darrencb/list/letterboxds-top-250-horror-films/
+    collection_order: custom
+    sync_mode: sync
+  Official Cabin Watchlist:
+    letterboxd_list: https://letterboxd.com/tane__/list/cabin-movies/
+    collection_order: custom
+    sync_mode: sync
+#######################
+# Trending and Oscars #
+#######################
+  Trending Movies:
+    template: { name: Chart, num: 2 }
+    trakt_trending: 10
+    tmdb_trending_daily: 10
+    tmdb_trending_weekly: 10
+    summary: Movies Trending across the internet
+  Popular Movies:
+    template: { name: Chart, num: 3 }
+    tmdb_popular: 40
+    imdb_list:
+      url: https://www.imdb.com/search/title/?title_type=feature,tv_movie,documentary,short
+      limit: 40
+    summary: Popular Movies across the internet
+  Oscars 2018:
+    template: { name: Oscars, year: 2018 }
+  Oscars 2019:
+    template: { name: Oscars, year: 2019 }
+  Oscars 2020:
+    template: { name: Oscars, year: 2020 }
+  Oscars 2021:
+    template: { name: Oscars, year: 2021 }
+  Oscars 2022:
+    template: { name: Oscars, year: 2022 }
+#############
+# Criterion #
+#############
+  Criterion Collection:
+    imdb_list: https://www.imdb.com/list/ls090936109/
+###########################
+#    Genre Collections    #
+###########################
+  Action:
+    template: {name: Genre, genre: Action, poster: https://theposterdb.com/api/assets/52018}
+  Adventure:
+    template: {name: Genre, genre: Adventure, poster: https://theposterdb.com/api/assets/52218}  
+  Animation:
+    template: {name: Genre, genre: Animation, poster: https://theposterdb.com/api/assets/120090}
+  Anime:
+    template: {name: Genre, genre: Anime, poster: https://theposterdb.com/api/assets/126743}
+  Biography:
+    template: {name: Genre, genre: Biography, poster: https://theposterdb.com/api/assets/60369}
+  Comedy:
+    template: {name: Genre, genre: Comedy, poster: https://theposterdb.com/api/assets/51397}
+  Crime:
+    template: {name: Genre, genre: Crime, poster: https://theposterdb.com/api/assets/53057}
+  Documentary:
+    template: {name: Genre, genre: Documentary, poster: https://theposterdb.com/api/assets/51430}
+  Drama:
+    template: {name: Genre, genre: Drama, poster: https://theposterdb.com/api/assets/52016}
+  Family:
+    template: {name: Genre, genre: Family, poster: https://theposterdb.com/api/assets/53059}
+  Fantasy:
+    template: {name: Genre, genre: Animation, poster: https://theposterdb.com/api/assets/51476}
+    imdb_list:
+    - url: https://www.imdb.com/search/title/?title_type=feature&release_date=1990-01-01,&user_rating=5.0,10.0&num_votes=100000,&genres=fantasy
+      limit: 100
+    - url: https://www.imdb.com/search/title/?title_type=feature&release_date=1990-01-01,&user_rating=5.0,10.0&num_votes=100000,&genres=fantasy&sort=user_rating,desc
+      limit: 100
+  Gangster:
+    template: {name: Genre, poster: https://theposterdb.com/api/assets/62561}
+    imdb_list:
+      - https://www.imdb.com/list/ls026270180/
+      - https://www.imdb.com/list/ls000093502/
+  History:
+    template: {name: Genre, genre: History, poster: https://theposterdb.com/api/assets/58022}
+  Horror:
+    template: {name: Genre, genre: Horror, poster: https://theposterdb.com/api/assets/51475}
+  Martial Arts:
+    template: {name: Genre, poster: https://theposterdb.com/api/assets/51773}
+    imdb_list:
+      - https://www.imdb.com/list/ls000099643/
+      - https://www.imdb.com/list/ls068611186/
+      - https://www.imdb.com/list/ls068378513/
+      - https://www.imdb.com/list/ls090404120/ 
+  Music:
+    template: {name: Genre, poster: https://theposterdb.com/api/assets/51398}
+    imdb_list:
+    - url: https://www.imdb.com/search/title/?title_type=feature&release_date=1990-01-01,&user_rating=5.0,10.0&num_votes=100000,&genres=music
+      limit: 200
+    - url: https://www.imdb.com/search/title/?title_type=feature&release_date=1990-01-01,&user_rating=5.0,10.0&num_votes=100000,&genres=music&sort=user_rating,desc
+      limit: 200
+  Musical:
+    template: {name: Genre, genre: Musical, poster: https://theposterdb.com/api/assets/51427}
+  Mystery:
+    template: {name: Genre, genre: Mystery, poster: https://theposterdb.com/api/assets/53060}
+  Pandemic:
+    template: {name: Genre, poster: https://theposterdb.com/api/assets/55837}
+    imdb_list: https://www.imdb.com/list/ls092321048/
+  Romance:
+    template: {name: Genre, genre: Romance, poster: https://theposterdb.com/api/assets/53062}
+  Science Fiction:
+    template: {name: Genre, genre: Science Fiction, poster: https://theposterdb.com/api/assets/51772}
+  Short:
+    template: {name: Genre, genre: Short, poster: https://theposterdb.com/api/assets/53063}
+  Sports:
+    template: {name: Genre, genre: Sport, poster: https://theposterdb.com/api/assets/60371}
+    imdb_list:
+    - url: https://www.imdb.com/search/title/?title_type=feature&release_date=1990-01-01,&user_rating=5.0,10.0&num_votes=100000,&genres=sport
+      limit: 200
+    - url: https://www.imdb.com/search/title/?title_type=feature&release_date=1990-01-01,&user_rating=5.0,10.0&num_votes=100000,&genres=sport&sort=user_rating,desc
+      limit: 200
+  Stand Up Comedy:
+    template: {name: Genre, poster: https://theposterdb.com/api/assets/49137}
+    imdb_list:
+      - https://www.imdb.com/list/ls070221411/
+      - https://www.imdb.com/list/ls086584751/
+      - https://www.imdb.com/list/ls086022668/
+      - https://www.imdb.com/list/ls049792208/
+  Sword & Sorcery:
+    template: {name: Genre, poster: https://theposterdb.com/api/assets/74604}
+    imdb_list: https://www.imdb.com/list/ls022909805
+    summary: Sword and Sorcery film is a sub-genre of Fantasy that tend to be more plot-driven. These films rely on heavy action and battle scenes. Common themes in Sword and Sorcery films include a rescue mission, saving a princess, and battling a fantastical monster. The worlds and characters in these films are often much less developed than in other fantasy sub-genres. Of all the Fantasy sub-genres, Sword and Sorcery is most likely to be geared towards a younger audience, as many of these films are animated.
+  Thriller:
+    template: {name: Genre, genre: Thriller, poster: https://theposterdb.com/api/assets/52019}
+  War:
+    template: {name: Genre, genre: War, poster: https://theposterdb.com/api/assets/51477}
+  Western:
+    template: {name: Genre, genre: Western, poster: https://theposterdb.com/api/assets/51774}
+##########
+# Actors #
+##########
+  Amy Adams:
+    template: {name: people, person: 9273}
+  Angelina Jolie:
+    template: {name: people, person: 11701}
+  Anne Hathaway:
+    template: {name: people, person: 1813}
+  Anthony Hopkins:
+    template: {name: people, person: 4173}
+  Brad Pitt:
+    template: {name: people, person: 287}
+  Cameron Diaz:
+    template: {name: people, person: 6941}
+  Carrie Fisher:
+    template: {name: people, person: 4}
+  Cate Blanchett:
+    template: {name: people, person: 112}
+  Coen Brothers:
+    writer: tmdb
+    director: tmdb
+    template: {name: people, person: "1223, 1224"}
+  Emma Stone:
+    template: {name: people, person: 54693}
+  Harrison Ford:
+    template: {name: people, person: 3}
+  Hayao Miyazaki:
+    template: {name: people, person: 608}
+  Nicolas Cage:
+    template: {name: people, person: 2963}
+  Quentin Tarantino:
+    writer: tmdb
+    director: tmdb
+    template: {name: people, person: 138}
+  Ridley Scott:
+    director: tmdb
+    template: {name: people, person: 578}
